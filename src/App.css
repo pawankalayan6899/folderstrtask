@@ -1,38 +1,285 @@
-.App {
-  text-align: center;
+body {
+  background-color: #f4f7f6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.folder-structure-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  max-height: 500px; /* Limit initial height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  scroll-behavior: smooth; /* Smooth scrolling */
+  scrollbar-width: thin; /* Thin scrollbar for modern browsers */
+  scrollbar-color: #4a90e2 #f0f4f8; /* Scrollbar color */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.folder-structure-container::-webkit-scrollbar {
+  width: 8px; /* Thin scrollbar */
+}
+
+.folder-structure-container::-webkit-scrollbar-track {
+  background: #f0f4f8; /* Light track color */
+  border-radius: 10px;
+}
+
+.folder-structure-container::-webkit-scrollbar-thumb {
+  background-color: #4a90e2; /* Scrollbar color */
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.folder-structure-container::-webkit-scrollbar-thumb:hover {
+  background-color: #2c3e50; /* Darker color on hover */
+}
+
+.folder-item {
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  margin-bottom: 2px;
+  padding: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.folder-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg, 
+    transparent, 
+    rgba(74, 144, 226, 0.1), 
+    transparent
+  );
+  transition: all 0.6s ease;
+}
+
+.folder-item:hover::before {
+  left: 100%;
+}
+
+.folder-item:hover {
+  background-color: #f0f4f8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transform: translateX(5px); /* Slight horizontal movement */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.folder-icon {
+  margin-right: 10px;
+  color: #4a90e2;
+  transition: color 0.3s ease;
+}
+
+.file-icon {
+  margin-right: 10px;
+  color: #7e57c2;
+}
+
+.folder-icon:hover {
+  color: #2c3e50;
+}
+
+/* Responsive Design */
+@media (max-width: 576px) {
+  /* iPhone and small devices */
+  .folder-structure-container {
+    padding: 10px;
+    max-height: 300px; /* Smaller height for mobile */
+  }
+
+  .folder-item {
+    padding: 6px;
+    font-size: 14px;
+  }
+
+  .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@media (min-width: 577px) and (max-width: 992px) {
+  /* iPad and medium devices */
+  .folder-structure-container {
+    padding: 12px;
+    max-height: 400px; /* Medium height for tablets */
+  }
+
+  .folder-item {
+    padding: 7px;
+    font-size: 15px;
+  }
 }
 
-.App-link {
-  color: #61dafb;
+@media (min-width: 993px) {
+  /* Desktop */
+  .folder-structure-container {
+    max-width: 800px;
+    max-height: 600px; /* Larger height for desktop */
+  }
 }
 
-@keyframes App-logo-spin {
+/* Button Styling */
+.btn-folder-action {
+  margin-right: 5px;
+  transition: all 0.3s ease;
+}
+
+.btn-folder-action:hover {
+  transform: scale(1.05);
+}
+
+/* Depth Indentation */
+.folder-depth-0 { padding-left: 0; }
+.folder-depth-1 { padding-left: 20px; }
+.folder-depth-2 { padding-left: 40px; }
+.folder-depth-3 { padding-left: 60px; }
+.folder-depth-4 { padding-left: 80px; }
+
+/* Expanded State */
+.folder-expanded {
+  background-color: #f1f8ff;
+  animation: folder-expand 0.3s ease;
+}
+
+@keyframes folder-expand {
   from {
-    transform: rotate(0deg);
+    opacity: 0.7;
+    transform: scaleY(0.9);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode .folder-structure-container {
+  background-color: #1e1e1e;
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .folder-item {
+  background-color: #2c2c2c;
+  color: #e0e0e0;
+}
+
+body.dark-mode .folder-item:hover {
+  background-color: #3c3c3c;
+}
+
+body.dark-mode .folder-icon {
+  color: #4a90e2;
+}
+
+body.dark-mode .file-icon {
+  color: #7e57c2;
+}
+
+body.dark-mode .btn-dark {
+  background-color: #4a4a4a;
+  border-color: #5a5a5a;
+}
+
+body.dark-mode .btn-light {
+  background-color: #e0e0e0;
+  color: #121212;
+}
+
+/* Existing dark mode styles can be removed from the previous implementation */
+@media (prefers-color-scheme: dark) {
+  /* Remove or comment out existing dark mode media query */
+}
+
+.list-group-item {
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.list-group-item:hover {
+  background-color: #e9ecef !important;
+  transform: translateX(5px);
+}
+
+/* Alternate row background for better depth perception */
+.list-group-item:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.list-group-item:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 576px) {
+  .dropdown-menu {
+    min-width: 100%;
+  }
+}
+
+/* Ensure icons have some spacing */
+.list-group-item svg {
+  margin-right: 8px;
+}
+
+/* Subtle depth indication */
+.list-group-item {
+  border-left: 4px solid transparent;
+  transition: border-left-color 0.2s ease;
+}
+
+.list-group-item:hover {
+  border-left-color: #ffc107;
+}
+
+.folder-item {
+  transition: background-color 0.3s ease;
+}
+
+.folder-item:hover {
+  background-color: #e9ecef;
+}
+
+.btn-outline-primary {
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.btn-outline-secondary {
+  border-color: #6c757d;
+  color: #6c757d;
+}
+
+.btn-outline-danger {
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .folder-item {
+    font-size: 0.9rem;
+  }
+  
+  .btn-sm {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.7rem;
   }
 }
