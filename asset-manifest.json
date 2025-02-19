@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/folderstrtask/static/css/main.1aa5de6c.css",
-    "main.js": "/folderstrtask/static/js/main.37d22f1e.js",
-    "static/js/453.b79045db.chunk.js": "/folderstrtask/static/js/453.b79045db.chunk.js",
-    "index.html": "/folderstrtask/index.html",
-    "main.1aa5de6c.css.map": "/folderstrtask/static/css/main.1aa5de6c.css.map",
-    "main.37d22f1e.js.map": "/folderstrtask/static/js/main.37d22f1e.js.map",
-    "453.b79045db.chunk.js.map": "/folderstrtask/static/js/453.b79045db.chunk.js.map"
+    "main.css": "/folderreacttask/static/css/main.1aa5de6c.css",
+    "main.js": "/folderreacttask/static/js/main.b6f21b42.js",
+    "static/js/453.b79045db.chunk.js": "/folderreacttask/static/js/453.b79045db.chunk.js",
+    "index.html": "/folderreacttask/index.html",
+    "main.1aa5de6c.css.map": "/folderreacttask/static/css/main.1aa5de6c.css.map",
+    "main.b6f21b42.js.map": "/folderreacttask/static/js/main.b6f21b42.js.map",
+    "453.b79045db.chunk.js.map": "/folderreacttask/static/js/453.b79045db.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1aa5de6c.css",
-    "static/js/main.37d22f1e.js"
+    "static/js/main.b6f21b42.js"
   ]
 }
